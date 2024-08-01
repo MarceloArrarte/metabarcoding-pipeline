@@ -1,7 +1,0 @@
-name: demultiplex_porechop
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-dependencies:
-  - porechop
