@@ -73,6 +73,8 @@ else{
     Channel.fromPath(params.reads).set { reads }
 }
 
+virtualenvsDir = "$projectDir/.virtualenvs"
+
 // Has the run name been specified by the user?
 //  this has the bonus effect of catching both -name and --name
 custom_runName = params.name
@@ -245,6 +247,8 @@ if(params.multiqc){
 }
 
  process kmer_freqs {
+     beforeScript "source $virtualenvsDir/kmer_freqs/bin/activate"
+
      memory { 7.GB * task.attempt }
      time { 1.hour * task.attempt }
      errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
@@ -265,6 +269,8 @@ if(params.multiqc){
  }
 
  process read_clustering {
+     beforeScript "source $virtualenvsDir/read_clustering/bin/activate"
+
      time { 1.hour * task.attempt }
      errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
      maxRetries 3
@@ -383,6 +389,8 @@ if(params.multiqc){
  }
 
  process medaka_pass {
+     beforeScript "source $virtualenvsDir/medaka_pass/bin/activate"
+
      memory { 7.GB * task.attempt }
      time { 1.hour * task.attempt }
      errorStrategy { task.exitStatus in 137..140 ? 'retry' : 'terminate' }
@@ -394,7 +402,7 @@ if(params.multiqc){
      tuple val(barcode), val(cluster_id), file(cluster_log), file(draft), file(corrected_reads), val(success) from racon_output
 
      output:
-     tuple val(barcode), val(cluster_id), file(cluster_log), file('consensus_medaka.fasta/consensus.fasta') into final_consensus
+     tuple val(barcode), val(cluster_id), file(cluster_log), file('consensus_medaka.fasta') into final_consensus
 
      script:
      if(success == "0"){
