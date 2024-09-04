@@ -10,11 +10,12 @@ sudo apt install python3.10-venv
 mkdir .virtualenvs
 cd .virtualenvs
 
-# process QC:
-sudo apt install fastp
 
 # process output_documentation:
 sudo apt install markdown
+
+# process QC:
+sudo apt install fastp
 
 # process fastqc:
 sudo apt install fastqc
@@ -49,3 +50,19 @@ pip install medaka pyabpoa
 
 # process consensus_classification:
 sudo apt install ncbi-blast+
+
+# TAMBIÉN: Descargamos una base de datos BLAST para clasificar secuencias consenso
+mkdir db db/taxdb
+wget https://ftp.ncbi.nlm.nih.gov/blast/db/16S_ribosomal_RNA.tar.gz && tar -xzvf 16S_ribosomal_RNA.tar.gz -C db
+wget https://ftp.ncbi.nlm.nih.gov/blast/db/taxdb.tar.gz && tar -xzvf taxdb.tar.gz -C db/taxdb
+
+# process join_results:
+# Nada que instalar, solo es un script bash
+
+# process get_abundances:
+python3 -m venv ./get_abundances
+source get_abundances/bin/activate
+pip install matplotlib pandas requests
+
+# process plot_abundances:
+# Nada que instalar, usa matplotlib y pandas pero ya está instalado en el environment del paso previo
