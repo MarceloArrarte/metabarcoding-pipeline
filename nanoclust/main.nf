@@ -490,6 +490,7 @@ if(params.multiqc){
  }
 
 process get_abundances {
+    beforeScript "source get_abundances/bin/activate"
     publishDir "${params.outdir}/${barcode}", mode: 'copy'
 
     input:
