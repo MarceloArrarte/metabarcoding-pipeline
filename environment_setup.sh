@@ -13,6 +13,9 @@ cd .virtualenvs
 
 # process output_documentation:
 sudo apt install markdown
+python3 -m venv ./output_documentation
+source output_documentation/bin/activate
+pip install markdown pymdown-extensions
 
 # process QC:
 sudo apt install fastp
@@ -65,4 +68,6 @@ source get_abundances/bin/activate
 pip install matplotlib pandas requests
 
 # process plot_abundances:
-# Nada que instalar, usa matplotlib y pandas pero ya está instalado en el environment del paso previo
+python3 -m venv ./plot_abundances
+source plot_abundances/bin/activate
+pip install matplotlib pandas numpy

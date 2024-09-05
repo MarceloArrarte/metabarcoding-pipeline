@@ -73,7 +73,7 @@ else{
     Channel.fromPath(params.reads).set { reads }
 }
 
-virtualenvsDir = "$projectDir/.virtualenvs"
+virtualenvsDir = "$projectDir/../.virtualenvs"
 
 // Has the run name been specified by the user?
 //  this has the bonus effect of catching both -name and --name
@@ -490,7 +490,7 @@ if(params.multiqc){
  }
 
 process get_abundances {
-    beforeScript "source get_abundances/bin/activate"
+    beforeScript "source $virtualenvsDir/get_abundances/bin/activate"
     publishDir "${params.outdir}/${barcode}", mode: 'copy'
 
     input:
@@ -506,6 +506,8 @@ process get_abundances {
 
 
 process plot_abundances {
+    beforeScript "source $virtualenvsDir/plot_abundances/bin/activate"
+
     publishDir "${params.outdir}/${barcode}", mode: 'copy'
 
     input:
@@ -519,6 +521,8 @@ process plot_abundances {
 }
 
 process output_documentation {
+    beforeScript "source $virtualenvsDir/output_documentation/bin/activate"
+
     publishDir "${params.outdir}/pipeline_info", mode: 'copy'
 
     input:
