@@ -48,7 +48,6 @@ sudo apt install fastani --assume-yes
 sudo apt install minimap2 racon --assume-yes
 
 # process medaka_pass:
-# sudo apt install medaka_consensus --assume-yes # no lo encuentra este
 python3 -m venv ./medaka_pass
 source medaka_pass/bin/activate
 pip install medaka pyabpoa
@@ -67,7 +66,7 @@ cd ../.virtualenvs
 
 # process join_results:
 # Nada que instalar, solo es un script bash
-# terminó de consumir los 25GB de disco
+
 # process get_abundances:
 python3 -m venv ./get_abundances
 source get_abundances/bin/activate
