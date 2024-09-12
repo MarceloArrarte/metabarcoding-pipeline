@@ -57,9 +57,13 @@ pip install medaka pyabpoa
 sudo apt install ncbi-blast+ --assume-yes
 
 # TAMBIÉN: Descargamos una base de datos BLAST para clasificar secuencias consenso
+cd ../nanoclust
 mkdir db db/taxdb
 wget https://ftp.ncbi.nlm.nih.gov/blast/db/16S_ribosomal_RNA.tar.gz && tar -xzvf 16S_ribosomal_RNA.tar.gz -C db
 wget https://ftp.ncbi.nlm.nih.gov/blast/db/taxdb.tar.gz && tar -xzvf taxdb.tar.gz -C db/taxdb
+rm 16S_ribosomal_RNA.tar.gz
+rm taxdb.tar.gz
+cd ../.virtualenvs
 
 # process join_results:
 # Nada que instalar, solo es un script bash
