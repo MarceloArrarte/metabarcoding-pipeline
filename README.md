@@ -1,6 +1,7 @@
 # Configuración del entorno para ejecutar NanoCLUST
 
-Se utiliza una instalación limpia a partir de Ubuntu 22.04.4.
+Se utiliza una instalación limpia a partir de Ubuntu 22.04.4. La instalación 20 minutos y requiere
+al menos 30GB de espacio, más lo que se necesite para almacenar datasets y resultados.
 
 ## Instalación de Nextflow
 Primero instalamos `curl` e instalamos SDKMAN, un gestor de SDKs para poder instalar Java (necesario para Nextflow).
@@ -59,5 +60,3 @@ Es automático, demora unos 10 minutos y se encarga de:
 - Crear virtual environments para aquellos procesos que utilicen programas Python.
 - Instalar paquetes de Python en cada virtual environment.
 - Descargar bases de datos BLAST para clasificación de secuencias.
-
-La instalación demora unos 10 minutos y requiere al menos 30GB de espacio, más lo que se necesite para almacenar datasets y resultados.
