@@ -60,3 +60,16 @@ Es automático, demora unos 10 minutos y se encarga de:
 - Crear virtual environments para aquellos procesos que utilicen programas Python.
 - Instalar paquetes de Python en cada virtual environment.
 - Descargar bases de datos BLAST para clasificación de secuencias.
+
+## Ejecución del pipeline
+Para ejecutar el pipeline, primero se debe conseguir un dataset. Los valores por defecto
+de Nextflow son adecuados para el análisis de lecturas del gen 16S. Luego de ejecutar
+el script de instalación de las dependencias, dentro de `/nanoclust` se
+crea la carpeta `reads_datasets` y se extrae el dataset `barcode01`. Luego, desde la ubicación
+`/nanoclust` ejecutar:
+```sh
+nextflow run main.nf --reads 'reads_datasets/barcode01/*' --db './db/16S_ribosomal_RNA' --tax './db/taxdb/'
+```
+
+En caso de ya haber ejecutado algunos de los procesos previamente, se puede reanudar
+la ejecución agregando la opción `-resume` al comando de Nextflow.
