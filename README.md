@@ -4,7 +4,14 @@ Se utiliza una instalación limpia a partir de Ubuntu 22.04.4. La instalación 2
 al menos 30GB de espacio, más lo que se necesite para almacenar datasets y resultados.
 
 ## Instalación de Nextflow
-Primero instalamos `curl` e instalamos SDKMAN, un gestor de SDKs para poder instalar Java (necesario para Nextflow).
+Primero instalamos los paquetes en Ubuntu necesarios para la instalación.
+```sh
+sudo apt-get update
+sudo apt install unzip --assume-yes
+sudo apt install zip --assume-yes
+```
+
+Luego instalamos `curl` e instalamos SDKMAN, un gestor de SDKs para poder instalar Java (necesario para Nextflow).
 ```sh
 sudo apt install curl --assume-yes
 curl -s https://get.sdkman.io | bash
