@@ -3,12 +3,12 @@
 # TO-DO ir agregando los comandos para instalar/configurar las dependencias de cada programa
 
 # Instalamos el intérprete de Python. Queda disponible con el comando python3
-sudo apt install python3.10 --assume-yes
+sudo apt install python3.12 --assume-yes
 
 sudo apt install pip --assume-yes
 
 # Instalamos venv para gestionar virtual environments
-sudo apt install python3.10-venv --assume-yes
+sudo apt install python3.12-venv --assume-yes
 mkdir .virtualenvs
 cd .virtualenvs
 
