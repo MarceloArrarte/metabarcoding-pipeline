@@ -4,9 +4,10 @@
 
 setup_log () {
   cyan="\033[1;36m"
+  col_reset="\033[0m"
   echo -e "${cyan}#####"
-  echo -e "${cyan}##### INSTALACIÓN: $1"
-  echo -e "${cyan}#####"
+  echo -e "##### INSTALACIÓN: $1"
+  echo -e "#####${col_reset}"
 }
 
 # Instalamos el intérprete de Python. Queda disponible con el comando python3
