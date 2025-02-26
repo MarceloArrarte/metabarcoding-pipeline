@@ -71,12 +71,12 @@ sudo apt install minimap2 racon --assume-yes
 setup_log "dependencias del proceso medaka_pass de NanoCLUST"
 setup_log "python3.11 y python3.11-venv"
 # Instalamos python3.11 porque la última versión de medaka (2.0.1) requiere python <3.12
-sudo add-apt-repository ppa:deadsnakes/ppa
+sudo add-apt-repository --yes ppa:deadsnakes/ppa
 sudo apt update
 sudo apt install python3.11
 sudo apt install python3.11-venv
 
-python3 -m venv ./medaka_pass
+python3.11 -m venv ./medaka_pass
 source medaka_pass/bin/activate
 pip install medaka pyabpoa
 
