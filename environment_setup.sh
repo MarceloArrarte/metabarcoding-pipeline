@@ -75,6 +75,7 @@ sudo add-apt-repository --yes ppa:deadsnakes/ppa
 sudo apt update
 sudo apt install python3.11
 sudo apt install python3.11-venv
+sudo apt install python3.11-dev
 
 python3.11 -m venv ./medaka_pass
 source medaka_pass/bin/activate
