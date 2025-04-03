@@ -1,2 +1,7 @@
 .virtualenvs
 .resultados_previos
+
+nanoclust/reads_datasets/*
+!nanoclust/reads_datasets/.gitkeep
+
+/reads

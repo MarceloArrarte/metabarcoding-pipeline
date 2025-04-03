@@ -1,0 +1,11 @@
+name: metabarcoding-analysis
+
+services:
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    command: tail -f /dev/null
+    volumes:
+      - ./reads:/usr/src/pipeline/reads_datasets
