@@ -17,6 +17,10 @@ RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
     sdk install java 17.0.10-tem && \
     sdk default java 17.0.10-tem"
 
+RUN bash -c "update-alternatives --install /usr/bin/java java $HOME/.sdkman/candidates/java/17.0.10-tem/bin/java 1"
+RUN bash -c "update-alternatives --set java $HOME/.sdkman/candidates/java/17.0.10-tem/bin/java"
+RUN bash -c "update-alternatives --install /usr/bin/javac javac $HOME/.sdkman/candidates/java/17.0.10-tem/bin/javac 1"
+RUN bash -c "update-alternatives --set javac $HOME/.sdkman/candidates/java/17.0.10-tem/bin/javac"
 
 ENV JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 ENV PATH="$JAVA_HOME/bin:$PATH"
@@ -53,6 +57,9 @@ COPY ./nanoclust ./pipeline
 RUN find . -name 'pipeline/*' -print0 | xargs -0 dos2unix
 
 WORKDIR /usr/src/pipeline
+
+RUN find bin -type f -name "*.py" -exec dos2unix {} \;
+RUN find templates -type f -name "*.py" -exec dos2unix {} \;
 
 ENTRYPOINT [ "/bin/bash" ]
 
