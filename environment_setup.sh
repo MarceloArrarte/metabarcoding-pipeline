@@ -89,6 +89,7 @@ sudo apt install ncbi-blast+ --assume-yes
 setup_log "Descargando base de datos BLAST para clasificación de secuencias consenso"
 cd ../nanoclust
 mkdir db db/taxdb
+sudo apt install wget --assume-yes
 wget https://ftp.ncbi.nlm.nih.gov/blast/db/16S_ribosomal_RNA.tar.gz && tar -xzvf 16S_ribosomal_RNA.tar.gz -C db
 wget https://ftp.ncbi.nlm.nih.gov/blast/db/taxdb.tar.gz && tar -xzvf taxdb.tar.gz -C db/taxdb
 rm 16S_ribosomal_RNA.tar.gz

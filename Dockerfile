@@ -9,9 +9,14 @@ RUN curl -s https://get.sdkman.io | bash
 
 ENV PATH="$HOME/.sdkman/bin:$PATH"
 
+# RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
+#     sdk install java 17.0.10-tem && \
+#     JAVA_HOME=$(sdk home java 17.0.10-tem)"
+
 RUN bash -c "source $HOME/.sdkman/bin/sdkman-init.sh && \
     sdk install java 17.0.10-tem && \
-    JAVA_HOME=$(sdk home java 17.0.10-tem)"
+    sdk default java 17.0.10-tem"
+
 
 ENV JAVA_HOME="$HOME/.sdkman/candidates/java/current"
 ENV PATH="$JAVA_HOME/bin:$PATH"
@@ -44,8 +49,11 @@ RUN bash -i -c "sed -i 's/\r//' environment_setup.sh && \
 
 COPY ./nanoclust ./pipeline
 
-RUN find . -name 'pipeline/templates/*.py' -print0 | xargs -0 dos2unix
+# RUN find . -name 'pipeline/templates/*.py' -print0 | xargs -0 dos2unix
+RUN find . -name 'pipeline/*' -print0 | xargs -0 dos2unix
 
 WORKDIR /usr/src/pipeline
 
-ENTRYPOINT [ "sh run_main.sh" ]
+ENTRYPOINT [ "/bin/bash" ]
+
+CMD [ "run_main.sh" ]
