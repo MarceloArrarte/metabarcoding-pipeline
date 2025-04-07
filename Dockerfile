@@ -3,7 +3,7 @@ FROM ubuntu:24.04 AS prueba
 WORKDIR /usr/src
 
 RUN apt-get update && \
-    apt install zip unzip curl bash dos2unix --assume-yes
+    apt install zip unzip curl bash dos2unix software-properties-common --assume-yes
 
 RUN curl -s https://get.sdkman.io | bash
 

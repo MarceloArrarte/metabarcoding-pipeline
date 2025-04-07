@@ -73,8 +73,8 @@ setup_log "python3.11 y python3.11-venv"
 # Instalamos python3.11 porque la última versión de medaka (2.0.1) requiere python <3.12
 sudo add-apt-repository --yes ppa:deadsnakes/ppa
 sudo apt update
-sudo apt install python3.11
-sudo apt install python3.11-venv
+sudo apt install python3.11 --assume-yes
+sudo apt install python3.11-venv --assume-yes
 sudo apt install python3.11-dev --assume-yes
 
 python3.11 -m venv ./medaka_pass

@@ -9,3 +9,4 @@ services:
     # command: tail -f /dev/null
     volumes:
       - ./reads:/usr/src/pipeline/reads_datasets
+      # agregar bind mount de results
