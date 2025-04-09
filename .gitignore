@@ -3,4 +3,5 @@
 
 nanoclust/reads_datasets/*
 /reads/*
+/results/*
 !.gitkeep

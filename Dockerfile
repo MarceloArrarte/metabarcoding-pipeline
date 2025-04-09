@@ -48,18 +48,15 @@ RUN bash -i -c "sed -i 's/\r//' environment_setup.sh && \
     sed -i 's/^sudo //' environment_setup.sh && \
     bash environment_setup.sh"
 
+# WORKDIR /usr/src/pipeline
 
-# FROM development AS production
+# RUN find bin -type f -name "*.py" -exec dos2unix {} \;
+# RUN find templates -type f -name "*.py" -exec dos2unix {} \;
+
+
+FROM development AS production
 
 COPY ./nanoclust ./pipeline
-
-# RUN find . -name 'pipeline/templates/*.py' -print0 | xargs -0 dos2unix
-RUN find . -name 'pipeline/*' -print0 | xargs -0 dos2unix
-
-WORKDIR /usr/src/pipeline
-
-RUN find bin -type f -name "*.py" -exec dos2unix {} \;
-RUN find templates -type f -name "*.py" -exec dos2unix {} \;
 
 ENTRYPOINT [ "/bin/bash" ]
 

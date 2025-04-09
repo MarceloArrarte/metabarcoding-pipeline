@@ -6,7 +6,20 @@ services:
       context: .
       dockerfile: Dockerfile
       target: development
-    # command: tail -f /dev/null
+    command:
+      - sh
+      - -c
+      - |
+        cd ./pipeline &&
+        find ./bin -type f -name '*.py' -exec dos2unix {} \; &&
+        find ./templates -type f -name '*.py' -exec dos2unix {} \; &&
+        nextflow run main.nf \
+          --reads './reads_datasets/*' \
+          --db './db/16S_ribosomal_RNA' \
+          --tax './db/taxdb/'
     volumes:
-      - ./reads:/usr/src/pipeline/reads_datasets
-      # agregar bind mount de results
+      # En development, bindear la carpeta nanoclust entera para ver los cambios en vivo
+      - ./nanoclust:/usr/src/pipeline
+      # En production, bindear solo las carpetas reads y results y hacer un layer COPY de nanoclust
+      - ${READS_PATH}:/usr/src/pipeline/reads_datasets
+      - ${RESULTS_PATH}:/usr/src/pipeline/results
