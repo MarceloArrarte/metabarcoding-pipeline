@@ -10,13 +10,13 @@ services:
       - sh
       - -c
       - |
-        cd ./pipeline &&
+        cd /usr/src/pipeline &&
         find ./bin -type f -name '*.py' -exec dos2unix {} \; &&
         find ./templates -type f -name '*.py' -exec dos2unix {} \; &&
         nextflow run main.nf \
           --reads './reads_datasets/*' \
-          --db './db/16S_ribosomal_RNA' \
-          --tax './db/taxdb/'
+          --db '/usr/src/db/16S_ribosomal_RNA' \
+          --tax '/usr/src/db/taxdb/'
     volumes:
       # En development, bindear la carpeta nanoclust entera para ver los cambios en vivo
       - ./nanoclust:/usr/src/pipeline
